@@ -1,0 +1,29 @@
+
+.header{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 19px;
+  margin-right: 19px;
+  align-items: center;
+}
+.header > a{
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15x;
+  margin-right: 13px;
+}
+.header__icon{
+  padding-left: 10px;
+  padding-right: 17px;
+  cursor: pointer;
+}
+.header__avatar{
+  cursor: pointer;
+}
+.header > a:hover{
+  text-decoration: underline;
+}
+.header__icon:hover{
+  
+}
