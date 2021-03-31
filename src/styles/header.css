@@ -2,10 +2,13 @@
 .header{
   display: flex;
   justify-content: space-between;
-  margin-top: 22px;
-  margin-right: 24px;
-  margin-left: 24px;
-  align-items: center;
+  padding-top: 26px;
+  padding-right: 24px;
+  padding-left: 24px;
+  align-items:flex-start;
+  /* padding-bottom: 10px; */
+  /* border-bottom: 0.2px solid lightgrey; */
+  margin-bottom: 12px;
 }
 .header__right{
   display: flex;
@@ -16,16 +19,20 @@
 .header__left{
   display: flex;
   /* justify-content: space-ev; */
-  align-items: center;
+  align-items: flex-start;
 }
 
 .header__left > img{
   object-fit: contain;
   height: 7.5vh;
   width: 15vh;
-  
+  cursor: pointer;
 }
-
+.header__leftOptions{
+  display:flex;
+  flex-direction: column;
+  margin-left: 7vh;
+}
 .header__right > a{
   color: black;
   cursor: pointer;
@@ -43,6 +50,42 @@
 }
 .header__right > a:hover{
   text-decoration: underline;
+}
+.header__leftOptions__below{
+display: flex;
+justify-content:space-between;
+margin-top: 4vh;
+margin-left: 19px;
+}
+.header__leftOptions__belowLeft{
+  display: flex;
+  align-items: center;
+  /* border: 2px solid green; */
+}
+.header__leftOptions__belowRight{
+  margin-right: 10px
+}
+.header__leftOptions__belowRight > a{
+  color: gray;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 20px;
+  padding-bottom: 14px;
+  font-Size: 16px;
+}
+.header__leftOptions__belowRight > button {
+border: none;
+height: 5vh;
+width: 9vh;
+color: gray;
+background-color: white; 
+border-radius:2px;
+cursor: pointer;
+}
+
+.header__leftOptions__belowRight > button:hover {
+border: 0.5px solid lightgray;
+box-shadow: 1px 1px lightgray;
 }
 .header__icon:hover{
   

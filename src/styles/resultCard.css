@@ -1,0 +1,37 @@
+.resultCard{
+  margin-top: 31px;
+  width: fit-content;
+    
+}
+.resultCard__body{
+  cursor: pointer;
+  width: fit-content;
+}
+.resultCard__body > p{
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-family: "Noto Sans", sans-serif;
+  width: fit-content;
+
+  /* color: gray; */
+}
+.resultCard__body > h3{
+  color: #1a0db1;
+  font-weight: 500;
+  font-size: 20.3px;
+  font-family: "Noto Sans", sans-serif;
+  width: fit-content;
+}
+.resultCard__body:hover > h3{
+  text-decoration: underline;
+}
+.resultCard > p{
+  margin-top: 5px;
+  font-size: 13px;
+  word-spacing: 1px;
+  line-height: 1.6;
+  letter-spacing: 0.7px;
+
+  font-family: "Arial", sans-serif;
+  color: #5a4a62;
+}

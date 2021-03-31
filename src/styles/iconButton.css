@@ -1,0 +1,17 @@
+.IconButton{
+  display: flex;
+  align-items:center;
+  width: auto;
+  color: gray;
+  font-family:Sans-serif ;
+  font-size: 13px;
+  padding-bottom: 14px;
+  padding-top: 5px;
+  margin-right: 26.3px;
+  cursor: pointer;
+  /* border-bottom: 3px solid blue; */
+}
+
+/* .IconButton__icon {
+  margin-right: 3px;
+} */

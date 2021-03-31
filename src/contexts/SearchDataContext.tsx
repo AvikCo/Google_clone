@@ -1,26 +1,28 @@
 import React from 'react';
 import axios from 'axios';
 
-interface searchData {
-  cacheId: string | undefined;
-  htmlFormattedUrl: string;
-  link: string;
-  snippet: string;
-  title: string;
+export interface searchData {
+	cacheId: string | undefined;
+	htmlFormattedUrl: string;
+	link: string;
+	snippet: string;
+	title: string;
+	htmlSnippet: string;
+}
+export interface SearchInformation {
+  searchTime: string;
+  totalSearchResult: string;
 }
 interface dataState {
   data: searchData[];
   term: string;
+  searchInformation: SearchInformation;
 }
 
  const Context = React.createContext<any>([]);
 
 export class SearchDataStore extends React.Component {
-  state: dataState = { data: [], term:'' };
-
-  // onSearch = (data: searchData[]) => {
-  //   this.setState({ data:data });
-  // }
+  state: dataState = { data: [], searchInformation: {searchTime: '', totalSearchResult: ''}, term:'' };
 
  MakeSearch = async (term: string) => {
     try{
@@ -34,17 +36,23 @@ export class SearchDataStore extends React.Component {
       }
       );
       
-      const data = response.data.items.map((item: any) =>
-      ({
-        cacheId: item.cacheId,
-        htmlFormattedUrl: item.htmlFormattedUrl,
-        link: item.link,
-        snippet: item.snippet,
-        title: item.title
-      }));
-      this.setState({ data: data });
-      this.setState({ term: term });
-      
+      const data = response.data.items.map((item: any) => ({
+				cacheId: item.cacheId,
+				htmlFormattedUrl: item.htmlFormattedUrl,
+				link: item.link,
+				snippet: item.snippet,
+				title: item.title,
+				htmlSnippet: item.htmlSnippet
+			}));
+      const { formattedSearchTime, formattedTotalResults } = response.data.searchInformation;
+      this.setState({
+				data: data,
+				term: term,
+				searchInformation: {
+					searchTime: formattedSearchTime,
+					totalSearchResult: formattedTotalResults,
+				},
+			});
     } catch (err) {
 
       console.log(err);
@@ -55,7 +63,7 @@ export class SearchDataStore extends React.Component {
 
   render() {
     return (
-      <Context.Provider value={{data: [ ...this.state.data], term: this.state.term, onSearch: this.MakeSearch}}>
+      <Context.Provider value={{data: [ ...this.state.data], term: this.state.term, searchInformation:this.state.searchInformation ,onSearch: this.MakeSearch}}>
           {this.props.children}
       </Context.Provider>
  
