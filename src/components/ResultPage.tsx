@@ -9,7 +9,6 @@ import ResultArea from './ResultArea';
 
 const ResultPage = withRouter(({history}) => {
   const contextType = useContext(SearchContext);
-  console.log(contextType);
 
   if (contextType.data.length === 0) {
     history.push('/');
@@ -17,7 +16,7 @@ const ResultPage = withRouter(({history}) => {
   
   return (
     <div>
-      <Header links={false} />
+      <Header history={history} links={false} />
       <ResultArea
         result={contextType.data}
         searchInfo={contextType.searchInformation}

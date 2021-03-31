@@ -8,7 +8,6 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
-
 import IconButton from './IconButton';
 import '../styles/header.css';
 import SearchArea from './SearchArea';
@@ -17,10 +16,11 @@ import SearchContext from '../contexts/SearchDataContext';
 
 
 interface HeaderProps {
-  links: boolean;
+	links: boolean;
+	history?: any;
 }
 
-const Header: React.FC<HeaderProps> =({ links }) => {
+const Header: React.FC<HeaderProps> =({ links, history }) => {
   const { term, onSearch } = useContext(SearchContext);
 	const [searchTerm, setSearchTerm] = useState(term);
 	const [selectedTab, setSelectedTab] = useState('');
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> =({ links }) => {
 				{/* google icon */}
 				{!links && (
 					<React.Fragment>
-						<img src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' />
+						<img onClick={()=>history.push('./') } src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' />
 						<div className='header__leftOptions'>
 							<SearchArea
 								term={searchTerm}
