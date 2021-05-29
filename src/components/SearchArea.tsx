@@ -9,9 +9,10 @@ interface SearchAreaProps{
   IconFirst?: any;
   IconSecond?: any;
   IconThird?: any;
-  handleSearchBox: (event: React.FormEvent) => Promise<void>;
+	handleSearchBox: (event: React.FormEvent) => Promise<void>;
+	history: any;
 }
-const SearchArea: React.FC<SearchAreaProps> = ({term, onTermChange, IconFirst, IconSecond, handleSearchBox, IconThird})=> {
+const SearchArea: React.FC<SearchAreaProps> = ({term, onTermChange, IconFirst, IconSecond, handleSearchBox, IconThird, history})=> {
   
   
   return (
@@ -31,7 +32,7 @@ const SearchArea: React.FC<SearchAreaProps> = ({term, onTermChange, IconFirst, I
 				/>
 			)}
 
-			<IconSecond className='search__mic' />
+			<IconSecond className='search__mic' onClick={()=>history.push('/voice') }/>
 
 			{IconThird && (
 				<IconButton style={{ color: '#4285f4' }} onClick={handleSearchBox}>

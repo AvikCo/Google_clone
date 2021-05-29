@@ -23,7 +23,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> =({ links, history }) => {
   const { term, onSearch } = useContext(SearchContext);
 	const [searchTerm, setSearchTerm] = useState(term);
-	const [selectedTab, setSelectedTab] = useState('');
+	const [selectedTab, setSelectedTab] = useState('All');
 
   const handleSearchBox = async (event: React.FormEvent) => {
 		event.preventDefault();
@@ -48,13 +48,16 @@ const Header: React.FC<HeaderProps> =({ links, history }) => {
 								IconSecond={MicIcon}
 								IconThird={SearchIcon}
 								handleSearchBox={handleSearchBox}
+								history={history}
 							/>
 							<div className='header__leftOptions__below'>
 								<div className='header__leftOptions__belowLeft'>
 									<IconButton
 										name='All'
 										selectedTab={selectedTab}
-										onTabClick={(name: string) => setSelectedTab(name)}
+										onTabClick={(name: string) => 
+											setSelectedTab(name)
+										}
 										Icon={SearchIcon}
 									/>
 									<IconButton
@@ -107,7 +110,7 @@ const Header: React.FC<HeaderProps> =({ links, history }) => {
 				)}
 				<AppsIcon style={{ color: 'gray' }} className='header__icon' />
 				<Avatar
-					src='https://media-exp1.licdn.com/dms/image/C5103AQHGVIKBumYhxQ/profile-displayphoto-shrink_400_400/0/1554026022479?e=1619654400&v=beta&t=zFhdCZtH4AnnqhbI2ZyCK7m3jlMu8zCtJgaM3KjVNyc'
+					src='https://avatars.githubusercontent.com/u/73161634?v=4'
 					className='header__avatar'
 				/>
 			</div>

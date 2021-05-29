@@ -45,6 +45,7 @@ const SearchBox = withRouter(({ history }) => {
 				term={input}
 				onTermChange={setInput}
 				handleSearchBox={handleSearchBox}
+				history={history}
 			/>
 
 			<div className='search__buttons'>
