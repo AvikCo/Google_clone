@@ -9,7 +9,6 @@ import SpeechRecognition, {
 } from 'react-speech-recognition';
 
 import DataContext from '../contexts/SearchDataContext';
-import { SettingsRemoteSharp } from '@material-ui/icons';
 
 
 const VoiceSearch = withRouter(({ history })=> {
@@ -22,7 +21,7 @@ const VoiceSearch = withRouter(({ history })=> {
 	} = useSpeechRecognition();
 	const [msg, setMsg] = useState('Loading...')
 	const { onSearch } = useContext(DataContext);
-
+	const [firstMicOn, SetfirstMicOn] = useState(false);
 	useEffect(() => {
 			const timer = setTimeout(startListening,2500)
 			return () => clearTimeout(timer)
@@ -31,10 +30,13 @@ const VoiceSearch = withRouter(({ history })=> {
 		if (finalTranscript != '') {
 			setMsg('Got It! Searching...')
 			MakeSearch(finalTranscript);
-			console.log(finalTranscript);
+		} else {
+			if (!listening && firstMicOn) {
+				history.push('/');
+			}
 		}
-console.log('triggerd use effect')
-	},[finalTranscript])
+		
+	},[listening, finalTranscript])
 	
 	const MakeSearch = async (searchTerm: string) => {
 		await onSearch(searchTerm);
@@ -55,10 +57,11 @@ console.log('triggerd use effect')
 			});
 			if (audio) {
 				//turning off the microphone as the next funtion will on it
+				SetfirstMicOn(true);
 				audio.getTracks().forEach((track) => track.stop());
 				setTimeout(SpeechRecognition.startListening, 1000);
-				setMsg('Speak Up');
-				setTimeout(() => setMsg('Not Listening'), 1000);
+				setMsg('Speak Now');
+				setTimeout(() => setMsg('Sorry! Didn\'t get'), 1000);
 			}
 		} catch (err) {
 			setMsg('Microphone access permission denied. Switching to text search ')
