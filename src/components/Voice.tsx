@@ -14,28 +14,27 @@ import DataContext from '../contexts/SearchDataContext';
 const VoiceSearch = withRouter(({ history })=> {
 	const {
 		transcript,
-		interimTranscript,
 		finalTranscript,
-		resetTranscript,
 		listening,
 	} = useSpeechRecognition();
 	const [msg, setMsg] = useState('Loading...')
 	const { onSearch } = useContext(DataContext);
 	const [firstMicOn, SetfirstMicOn] = useState(false);
 	useEffect(() => {
-			const timer = setTimeout(startListening,2500)
-			return () => clearTimeout(timer)
+		const timer = setTimeout(startListening, 2500);
+		return () => clearTimeout(timer);
+		// eslint-disable-next-line
 	}, []);
 	useEffect(() => {
-		if (finalTranscript != '') {
-			setMsg('Got It! Searching...')
+		if (finalTranscript !== '') {
+			setMsg('Got It! Searching...');
 			MakeSearch(finalTranscript);
 		} else {
 			if (!listening && firstMicOn) {
 				history.push('/');
 			}
 		}
-		
+		// eslint-disable-next-line
 	},[listening, finalTranscript])
 	
 	const MakeSearch = async (searchTerm: string) => {
