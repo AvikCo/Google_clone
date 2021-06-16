@@ -11,6 +11,7 @@ const ResutCard: React.FC<ResultCardProps> = ({ content, index }) => {
 
 	// const linkToShow =
 	// 	'https://' + content.link.slice(8).replaceAll('/', ' > ').substring(0,80);
+	//adding one line
 
 	return (
 		<div className='resultCard'>
